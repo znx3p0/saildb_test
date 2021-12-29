@@ -6,8 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-# saildb = "0.0.1"
-saildb = { path = "../saildb" }
+saildb = "0.0.2"
+# saildb = { path = "../saildb" }
 structopt = "0.3"
 # canary = { path = "../canary/canary" }
 # srpc = { path = "../srpc/srpc" }
