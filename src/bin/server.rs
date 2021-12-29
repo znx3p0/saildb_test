@@ -1,6 +1,7 @@
+
 use saildb::Sail;
-use sia::Addr;
-use sia::Result;
+use canary::Addr;
+use canary::Result;
 use structopt::StructOpt;
 
 
@@ -11,10 +12,11 @@ struct Opt {
     bind: Addr,
 }
 
-#[sia::main]
+#[canary::main]
 async fn main() -> Result<()> {
     let opt = Opt::from_args();
     opt.bind.bind().await?;
+
     Sail::<String, String>::bind()?;
     println!("listening at {:?}", opt.bind);
     std::future::pending().await

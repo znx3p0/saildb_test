@@ -1,5 +1,5 @@
-use saildb::Sail;
-use sia::{Addr, Result};
+use saildb::{Sail, DistributedList};
+use canary::{Addr, Result, Serialize};
 use structopt::{StructOpt, clap::arg_enum};
 
 #[derive(StructOpt, Debug)]
@@ -38,9 +38,16 @@ arg_enum! {
     }
 }
 
-#[sia::main]
+#[canary::main]
 async fn main() -> Result<()> {
     let opt = Opt::from_args();
+
+    use srpc::IntoClient;
+
+    let mut c = opt.addr.clone().service("id").connect().await?.client::<DistributedList<i32>>();
+    c.push(&2).await?;
+    c.push(2).await?;
+
     let mut db: Sail<String, String> = Sail::new(opt.addr).await?;
     match opt.action {
         Command::Insert { key, value } => {
@@ -57,6 +64,9 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
-
-
+// canary
+// dingo
+// iguana
+// beskar
+// selene / luna
 
