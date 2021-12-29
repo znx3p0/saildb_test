@@ -1,5 +1,5 @@
 use saildb::{Sail, DistributedList};
-use canary::{Addr, Result, Serialize};
+use canary::{Addr, Result};
 use structopt::{StructOpt, clap::arg_enum};
 
 #[derive(StructOpt, Debug)]
